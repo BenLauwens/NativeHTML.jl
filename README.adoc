@@ -38,7 +38,7 @@ TODO
 
 == License
 
-[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
+image::http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat[link:"LICENSE.md"]
 
 == Authors
 
