@@ -10,7 +10,7 @@ html() do
     body() do
         div() do
             span("Hello", style="color:red;")
-            span(", ")
+            text(",")
             b("World!")
         end
     end
@@ -20,16 +20,16 @@ end
 ```html
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Hello, World!</title>
-    </head>
-    <body>
-        <div>
-            <span style="color:red;">Hello</span>
-            <span>, </span>
-            <b>World!</b>
-        </div>
-    </body>
+ <head>
+  <title>Hello, World!</title>
+ </head>
+ <body>
+  <div>
+   <span style="color:red;">Hello</span>
+   , 
+   <b>World!</b>
+  </div>
+ </body>
 </html>
 ```
 
