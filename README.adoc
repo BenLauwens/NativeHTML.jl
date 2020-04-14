@@ -1,3 +1,58 @@
 = NativeSVG
 
 A pure Julia SVG generator. Using `do` blocks and keyword arguments, a one-to-one mapping is implemented between the HTML standard and Julia.
+
+```julia
+html() do
+    head() do
+        title("Hello, World!")
+    end
+    body() do
+        div() do
+            span("Hello", style="color:red;")
+            span(", ")
+            b("World!")
+        end
+    end
+end
+```
+
+== Build Status & Coverage
+
+TODO
+
+== Installation
+
+NativeHTML.jl has not yet been registered but can be installed by running
+
+```julia
+julia> using Pkg
+
+julia> pkg"add https://github.com/BenLauwens/NativeHTML.jl.git"
+
+```
+
+== Documentation
+
+TODO
+
+== License
+
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
+
+== Authors
+
+- Ben Lauwens, Royal Military Academy, Brussels, Belgium.
+
+== Contributing
+
+- To discuss problems or feature requests, file an issue. For bugs, please include as much information as possible, including operating system and julia version.
+- To contribute, make a pull request. Contributions should include tests for any new features/bug fixes.
+
+== Release Notes
+
+- v0.1 (2020): Initial release.
+
+== Todo
+
+- Documentation.
