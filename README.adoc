@@ -38,7 +38,7 @@ TODO
 
 == License
 
-image::http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat[link:"LICENSE.md"]
+image::http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat[link:"https://github.com/BenLauwens/NativeHTML.jl/blob/master/LICENSE"]
 
 == Authors
 
