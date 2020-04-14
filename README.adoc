@@ -17,6 +17,22 @@ html() do
 end
 ```
 
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello, World!</title>
+    </head>
+    <body>
+        <div>
+            <span style="color:red;">Hello</span>
+            <span>, </span>
+            <b>World!</b>
+    </div>
+    </body>
+</html>
+```
+
 == Build Status & Coverage
 
 TODO
