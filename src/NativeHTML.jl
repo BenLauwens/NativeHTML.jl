@@ -48,7 +48,7 @@ function html(f::Function)
     io = IOBuffer()
     println(io, "<!DOCTYPE html>")
     println(io, "<html>")
-    task_local_storage(:io, io)
+    task_local_storage(:htmlio, io)
     task_local_storage(:level, 1)
     f()
     println(io, "</html>")
@@ -59,7 +59,7 @@ export html
 
 function fragment(f::Function; level::Int = 0)
     io = IOBuffer()
-    task_local_storage(:io, io)
+    task_local_storage(:htmlio, io)
     task_local_storage(:level, level)
     f()
     HTML(take!(io))
@@ -193,7 +193,7 @@ const PRIMITIVES = Dict(
 for (primitive, notvoid) in PRIMITIVES
     eval(quote
         function $primitive(txt::String = ""; kwargs...)
-            let io = task_local_storage(:io), level = task_local_storage(:level)
+            let io = task_local_storage(:htmlio), level = task_local_storage(:level)
                 print(io, " " ^ level, "<", $primitive)
                 for (arg, val) in kwargs
                     print(io, " ", replacenotallowed(arg), "=\"", val, "\"")
@@ -217,7 +217,7 @@ end
 for primitive in keys(filter(d->last(d), PRIMITIVES))
     eval(quote
         function $primitive(f::Function; kwargs...)
-            let io = task_local_storage(:io), level = task_local_storage(:level)
+            let io = task_local_storage(:htmlio), level = task_local_storage(:level)
                 print(io, " " ^ level, "<", $primitive)
                 for (arg, val) in kwargs
                     print(io, " ", replacenotallowed(arg), "=\"", val, "\"")
@@ -233,7 +233,7 @@ for primitive in keys(filter(d->last(d), PRIMITIVES))
 end
 
 function text(txt::String)
-    let io = task_local_storage(:io), level = task_local_storage(:level)
+    let io = task_local_storage(:htmlio), level = task_local_storage(:level)
         println(io, " " ^ level, txt)
     end
 end
@@ -241,7 +241,7 @@ end
 export text
 
 function cdata(txt::String)
-    let io = task_local_storage(:io), level = task_local_storage(:level)
+    let io = task_local_storage(:htmlio), level = task_local_storage(:level)
         println(io, " " ^ level, "<![CDATA[", txt, "]]>")
     end
 end
