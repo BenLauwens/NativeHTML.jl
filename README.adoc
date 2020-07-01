@@ -1,4 +1,4 @@
-= NativeSVG
+= NativeHTML
 
 A pure Julia HTML generator. Using `do` blocks and keyword arguments, a one-to-one mapping is implemented between the HTML standard and Julia.
 
