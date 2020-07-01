@@ -1,6 +1,6 @@
 = NativeSVG
 
-A pure Julia SVG generator. Using `do` blocks and keyword arguments, a one-to-one mapping is implemented between the HTML standard and Julia.
+A pure Julia HTML generator. Using `do` blocks and keyword arguments, a one-to-one mapping is implemented between the HTML standard and Julia.
 
 ```julia
 html() do
