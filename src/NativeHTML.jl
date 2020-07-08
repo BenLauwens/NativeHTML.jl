@@ -3,7 +3,7 @@ module NativeHTML
 import Base.div
 
 struct HTML
-    data::Array{UInt8,1}
+    data::Vector{UInt8}
 end
 
 Base.showable(::MIME"text/html", _::HTML) = true
@@ -196,7 +196,8 @@ for (primitive, notvoid) in PRIMITIVES
             let io = task_local_storage(:htmlio), level = task_local_storage(:level)
                 print(io, " " ^ level, "<", $primitive)
                 for (arg, val) in kwargs
-                    print(io, " ", replacenotallowed(arg), "=\"", val, "\"")
+                    print(io, " ", replacenotallowed(arg))
+                    val === nothing || print(io, "=\"", val, "\"")
                 end
                 if txt === "" 
                     $notvoid ? println(io, "/>") : println(io, ">")
@@ -220,7 +221,8 @@ for primitive in keys(filter(d->last(d), PRIMITIVES))
             let io = task_local_storage(:htmlio), level = task_local_storage(:level)
                 print(io, " " ^ level, "<", $primitive)
                 for (arg, val) in kwargs
-                    print(io, " ", replacenotallowed(arg), "=\"", val, "\"")
+                    print(io, " ", replacenotallowed(arg))
+                    val === nothing || print(io, "=\"", val, "\"")
                 end
                 println(io, ">")
                 task_local_storage(:level, level + 1)
